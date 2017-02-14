@@ -1,0 +1,2 @@
+# WeatherOutpost
+Our mini project
