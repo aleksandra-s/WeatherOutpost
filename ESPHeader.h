@@ -27,9 +27,13 @@ char connect_to_ap(char* ssid, char* pwrd);
 char verify_ap_connection();
 
 // CALLED BY STATE MODULE WHEN USER SELECTS CITY
-// 
+// Send AT+CIPSTART="TCP","api.openweathermap.org",80
+// Then AT+CIPSEND=119 (number may vary based on chosen city)
+// And GET /data/2.5/weather?q=London,uk&units=metric&APPID=c2e01f5a4c6a50caf58fe4301f5a9e3d
+// which will be filled with the correct city and country
+char* (char* city, char* country, int return_info_length);
 
-// dummy functions
+
 
 /* State module */
 
