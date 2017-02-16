@@ -5,4 +5,6 @@
                     : Forecast function call
 
 +Kyle needs to neaten up the menu navigation system
-  -Consider defining
+  -Consider defining nav functions into separate file
+  -Would need to add pointers as variables to all of them
+  
