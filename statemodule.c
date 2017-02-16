@@ -16,32 +16,55 @@
 
 
 int currentline = 0;
-
-
 int timeoutcount = 0; // global counter
+int currentmenu = 0;
+char menu[10][10];
+
+void navigate(int currentline)
+	{
+	if(currentmenu == 0)
+		{
+		++currentmenu;
+		display_string(0, "our");
+		display_string(1, "first ");
+		display_string(2, "Menu");
+		display_string(3, "Back");
+		currentline = 0;
+		return;
+		}
+	if(currentmenu == 1)
+		{
+		display_string(0, "Try");
+		display_string(1, "The");
+		display_string(2, "Bottom");
+		display_string(3, "Option");
+		currentline = 0;
+		textbuffer[currentline][12] = '*';
+		currentmenu--;
+		return;
+		}
+	}
 
 
+void processButtons(int buttonPress)
+	{
+	if(buttonPress & 0x4)// Button
+	   navigate(currentline);
+	if(buttonPress & 0x2)
+		{
+		textbuffer[currentline][12] = ' ';
+  		currentline = mod((currentline + 1),4);
+		textbuffer[currentline][12] = '*';
+ 		}
+	if(buttonPress & 0x1)
+		{
+		textbuffer[currentline][12] = ' ';
+	 	currentline = mod((currentline-1),4);
+		textbuffer[currentline][12] = '*';
+		}
+	}
 
 /* Interrupt Service Routine */
-void processButtons(int buttonPress)
-{
-	if(buttonPress & 0x4)// Button
-	   	PORTE = PORTE + 1;
-	if(buttonPress & 0x2)
-		  {
-			textbuffer[currentline][12] = ' ';
-  		currentline = mod((currentline + 1),4);
-			textbuffer[currentline][12] = '*';
- 			}
-	if(buttonPress & 0x1)
-			{
-			textbuffer[currentline][12] = ' ';
-		  currentline = mod((currentline-1),4);
-			textbuffer[currentline][12] = '*';
-
-			}
-}
-
 void user_isr( void )
 	{
   if((IFS(0) & 0x100) == 0x100)
