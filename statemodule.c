@@ -20,31 +20,23 @@ int timeoutcount = 0; // global counter
 int currentmenu = 0;
 char menu[10][10];
 
-void navigate(int currentline)
-	{
-	if(currentmenu == 0)
-		{
-		++currentmenu;
-		display_string(0, "our");
-		display_string(1, "first ");
-		display_string(2, "Menu");
-		display_string(3, "Back");
-		currentline = 0;
-		return;
-		}
-	if(currentmenu == 1)
-		{
-		display_string(0, "Try");
-		display_string(1, "The");
-		display_string(2, "Bottom");
-		display_string(3, "Option");
-		currentline = 0;
-		textbuffer[currentline][12] = '*';
-		currentmenu--;
-		return;
-		}
-	}
 
+void navigate()
+	{
+
+		if(currentmenu == 0)
+			{
+			++currentmenu;
+			display_menu(1);
+			}
+		else if(currentmenu == 1)
+			{
+			--currentmenu;
+			display_menu(2);
+		  }
+	currentline = 0;
+	textbuffer[currentline][12] = '*';
+	}
 
 void processButtons(int buttonPress)
 	{
