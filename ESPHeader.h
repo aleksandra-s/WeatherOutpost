@@ -1,5 +1,4 @@
 // ALEKSANDRA
-/* ESP functions/module */
 
 // DONE WHEN CHIPKIT IS TURNED ON
 // Initialize UART registers, check that ESP-01 communication is up.
@@ -32,11 +31,3 @@ char verify_ap_connection();
 // And GET /data/2.5/weather?q=London,uk&units=metric&APPID=c2e01f5a4c6a50caf58fe4301f5a9e3d
 // which will be filled with the correct city and country
 char* (char* city, char* country, int return_info_length);
-
-
-
-/* State module */
-
-/* LCD module */
-
-/* Buttons module (incl. ISR) */
