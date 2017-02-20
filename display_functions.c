@@ -24,7 +24,7 @@ static void num32asc( char * s, int );
 #define DISPLAY_TURN_OFF_VBAT (PORTFSET = 0x20)
 
 
-
+//Function that controls which menus are printed
 void display_menu(int select)
 	{
 	switch(select)
@@ -60,12 +60,23 @@ void display_menu(int select)
 			return;
 		}
 	}
+
+//function that moves cursor up and down
+void move_cursor(int direction, volatile int *currentline)
+	{
+	textbuffer[*currentline][12] = ' ';
+	*currentline = mod((*currentline+direction),4);
+	textbuffer[*currentline][12] = '*';
+	}
+//function that wipes the cursor and then places it at top of menu
+//whenever there is a menu change
 void clear_line(volatile int *currentline)
 	{
 	*currentline = 0;
 
 	textbuffer[*currentline][12] = '*';
 	}
+
 
 
 /* quicksleep:
