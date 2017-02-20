@@ -5,10 +5,6 @@
 #include "WO_LCDheader.h" /* Declarations of display functions for LCD */
 #include "WO_buttons.h" /* Declarations of I/O button functions and ISR*/
 
-#define MAIN_MENU 1
-#define WIFI_MENU 3 // Needs to be changed, discuss with Kyle
-#define CITY_MENU 2
-
 #define MAIN_MENU_TOTAL 2
 #define MAIN_MENU_WIFI 0
 #define MAIN_MENU_CITIES 1
@@ -116,40 +112,6 @@ int main(void) {
 	
 	return 0;
 }	
-/*
-
-// Display main menu
-
-display_menu(MAIN_MENU); // I guess should be navigate, have to see if Tatus understands it (statemodule.c))
-						 // also can we please call this something better than navigate
-
-// Allow user to navigate and select next menu (should be wifi, but up to them I guess ¯\_(ツ)_/¯ )
-// Need a while loop to keep this up?
-
-
-if(get_btns() & 0x2){ // if button 2 is pressed, cursor moves downwards
-	navigate_cursor_down();
- }
-	
-if(get_btns() & 0x1){ // if button 1 is pressed, cursor moves upwards
-	navigate_cursor_up();
-}
-
-if(get_btns() & 0x4){ // if button 4 is pressed 
-	switch(g_currentLine){
-		
-		case 0 :
-		display_menu(CITY_MENU);
-		break;
-		
-		case 1 :
-		display_menu(WIFI_MENU);
-		break;
-		
-		
-}
-	
-*/
 
 
 	
