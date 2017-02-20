@@ -1,13 +1,10 @@
-// Navigate menu cursor (*) up a line
-void navigate_cursor_up(){
-  textbuffer[currentline][12] = ' ';
-  currentline = mod((currentline + 1),4);
-  textbuffer[currentline][12] = '*';
-}
+#include "WO_LCDHeader.h"
 
-// Navigate menu cursor (*) down a line
-void navigate_cursor_down(){
-  textbuffer[currentline][12] = ' ';
-  currentline = mod((currentline - 1),4);
-  textbuffer[currentline][12] = '*';
+void initialize_LCD(void){}
+
+void display_string(int line, char *s){}
+
+// Navigate menu cursor (*)
+void put_cursor_index(int line){
+ //implement here
 }
