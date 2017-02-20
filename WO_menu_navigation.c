@@ -4,6 +4,21 @@
 #include "master.h"  /* Declarations for all functions and data */
 
 
+void processButtons(int buttonPress, volatile int *currentline,volatile int *currentmenu)
+	{
+	if(buttonPress & 0x4)// Button 4
+			{
+	   	navigate(currentline, currentmenu);
+			}
+	if(buttonPress & 0x2) // button 2
+		  {
+			move_cursor(1,currentline);
+ 			}
+	if(buttonPress & 0x1) // button 1
+			{
+			move_cursor(-1,currentline);
+			}
+}
 
 
 void navigate(volatile int *currentline,volatile int *currentmenu)
@@ -29,6 +44,7 @@ void navigate(volatile int *currentline,volatile int *currentmenu)
 	clear_line(currentline);
   return;
 	}
+
 
 
 void select_line(int currentline, volatile int *currentmenu)
@@ -92,7 +108,7 @@ void select_line(int currentline, volatile int *currentmenu)
 		 }
 
 
-		 
+
 		 // Wifi menu options **************************************
 		 case 8:
 		 {
