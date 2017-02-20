@@ -2,7 +2,7 @@
 //These include things like the mod function, whose sole purpose is
 //to allow modular arithmetic to work with negative numbers
 
-void labinit( void )
+void initialize( void )
 	{
   TRISE = TRISE & ~0xff; // set LEDs to output (initialize 8 lsb of Port E to outputs)
   TRISD = TRISD | ~0xffffe01f; // set bits 11 through 5 of Port D as inputs
