@@ -23,12 +23,6 @@ void die(int deathValue){
 	while(1);
 }	
 
-void initialize_LED(){
-	volatile int* trise = (volatile int*) 0xbf886100; 
-    *trise = *trise & ~0xff; // set LEDs to output (initialize 8 lsb of Port E to outputs)
-	//volatile int* porte = (volatile int*) 0xbf886110;
-	*porte = *porte | 0x0; // LEDs begin by showing value 0 (initialize value of Port E to 0) 
-}
 
 
 int main(void) {
