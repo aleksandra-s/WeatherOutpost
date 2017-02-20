@@ -1,11 +1,12 @@
-/* function.c
+/* mipslabfunc.c
    This file written 2015 by F Lundevall
    Some parts are original code written by Axel Isaksson
 
+   For copyright and licensing, see file COPYING */
 
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
-#include "mipslab.h"  /* Declatations for these labs */
+#include "master.h"  /* Declatations for these labs */
 
 /* Declare a helper function which is local to this file */
 static void num32asc( char * s, int );
@@ -23,10 +24,55 @@ static void num32asc( char * s, int );
 #define DISPLAY_TURN_OFF_VBAT (PORTFSET = 0x20)
 
 
+
+void display_menu(int select)
+	{
+	switch(select)
+		{
+			case 0 :
+				{
+				display_string(0, "Cities");
+				display_string(1, "WiFi ");
+				display_string(2, "Compare");
+				display_string(3, "");
+				return;
+				}
+
+			case 1 :
+				{
+				display_string(0, "Stkholm");
+				display_string(1, "London");
+				display_string(2, "New york");
+				display_string(3, "Back");
+				return;
+				}
+			case 2:
+				{
+				display_string(0, "Connect");
+				display_string(1, "Disconnect");
+				display_string(2, "Available");
+				display_string(3, "Back ");
+
+				return;
+				}
+			case 4:
+			case 5:
+			return;
+		}
+	}
+void clear_line(volatile int *currentline)
+	{
+	*currentline = 0;
+
+	textbuffer[*currentline][12] = '*';
+	}
+
+
 /* quicksleep:
    A simple function to create a small delay.
    Very inefficient use of computing resources,
    but very handy in some special cases. */
+
 void quicksleep(int cyc) {
 	int i;
 	for(i = cyc; i > 0; i--);
@@ -79,40 +125,6 @@ void display_init(void) {
 	spi_send_recv(0xAF);
 }
 
-void display_menu(int select)
-	{
-	switch(select)
-		{
-			case 1 :
-				{
-				display_string(0, "Cities");
-				display_string(1, "WiFi ");
-				display_string(2, "Compare");
-				display_string(3, "Forecast");
-				return;
-				}
-
-			case 2 :
-				{
-				display_string(0, "Stkholm");
-				display_string(1, "London");
-				display_string(2, "New york");
-				display_string(3, "Sydney");
-				return;
-				}
-			case 3:
-				{
-				display_string(0, "");
-				display_string(1, "London");
-				display_string(2, "New york");
-				display_string(3, "Sydney");
-				return;
-				}
-			case 4:
-			case 5:
-			return;
-		}
-	}
 
 
 
@@ -187,13 +199,17 @@ static void num32asc( char * s, int n )
     *s++ = "0123456789ABCDEF"[ (n >> i) & 15 ];
 }
 
-/*
- * nextprime
- *
- * Return the first prime number larger than the integer
- * given as a parameter. The integer must be positive.
- */
 
+int mod (int a, int b)
+	{
+   int ret = a % b;
+
+   if(ret < 0)
+	   {
+     ret+=b;
+	   }
+   return ret;
+	}
 /*
  * itoa
  *
