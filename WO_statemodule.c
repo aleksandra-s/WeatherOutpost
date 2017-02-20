@@ -1,6 +1,9 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
-//#include "mipslab.h"  /* Declatations for these labs */
+#include "master.h"  /* Declatations for these labs */
+
+
+//*** OVER HERE *** If all the functions in this .h files are
 #include "WO_ESPheader.h" /* Declarations of functions controlling ESP-01 */
 #include "WO_LCDheader.h" /* Declarations of display functions for LCD */
 #include "WO_buttons.h" /* Declarations of I/O button functions and ISR*/
