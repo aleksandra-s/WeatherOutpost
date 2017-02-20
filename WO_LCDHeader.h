@@ -1,7 +1,13 @@
-/*Display functions*/
+#ifndef WO_LCDHEADER_H
+#define WO_LCDHEADER_H
 
-//Navigate cursor (*) up a line
-void navigate_cursor_up();
+// Initialize LCD
+void initialize_LCD(void);
 
-//Navigate cursor (*) down a line
-void navigate_cursor_down();
+// Display string on a line
+void display_string(int line, char *s);
+	
+//Navigate cursor (*) to a line
+void put_cursor_index(int line);
+
+#endif
