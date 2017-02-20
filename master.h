@@ -1,4 +1,12 @@
+/* Declare menu navigation functions from menu_navigate.c*/
+
+void processButtons(int buttonPress, volatile int *currentline,volatile int *currentmenu);
+void navigate(volatile int *currentmenu, volatile int *currentline);
+void select_line(int currentline, volatile int *currentmenu);
+
 /* Declare display-related functions from mipslabfunc.c */
+void move_cursor(int direction, volatile int *currentline);
+void display_menu(int select);
 void display_image(int x, const uint8_t *data);
 void display_init(void);
 void display_string(int line, char *s);
@@ -7,7 +15,7 @@ uint8_t spi_send_recv(uint8_t data);
 
 /* Declare lab-related functions from mipslabfunc.c */
 char * itoaconv( int num );
-void labwork(void);
+void initialize(void);
 void quicksleep(int cyc);
 int mod (int a, int b);
 
